@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anushka — A Little Surprise ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  background:linear-gradient(135deg,#fff0f5,#f8efff);
+  color:#35253a; overflow:hidden;
+}
+.card{
+  width:min(92%,430px); max-height:92vh; overflow:auto;
+  background:rgba(255,255,255,.88); border:1px solid rgba(255,255,255,.9);
+  border-radius:28px; padding:28px 22px; text-align:center;
+  box-shadow:0 20px 60px rgba(100,50,100,.18);
+  position:relative; z-index:2;
+}
+.heart{font-size:48px; animation:pulse 1.5s infinite}
+h1{margin:8px 0;font-size:30px}
+h2{font-size:23px}
+p{line-height:1.65;font-size:16px}
+.small{color:#806d82;font-size:14px}
+button{
+  border:0; border-radius:999px; padding:13px 22px; margin:7px;
+  font-size:15px; font-weight:700; cursor:pointer;
+  background:#e85b91; color:white; box-shadow:0 8px 20px rgba(232,91,145,.25);
+}
+button.alt{background:#f3e5ed;color:#633c54;box-shadow:none}
+.screen{display:none}
+.screen.active{display:block;animation:fade .5s}
+.progress{height:7px;background:#f0e4ed;border-radius:10px;margin:10px 0 22px}
+.bar{height:100%;width:0;background:#e85b91;border-radius:10px;transition:.4s}
+.quote{font-style:italic;background:#fff4f8;padding:17px;border-radius:18px;margin:18px 0}
+#hearts span{position:fixed;bottom:-30px;animation:float 5s linear forwards;z-index:1}
+@keyframes pulse{50%{transform:scale(1.1)}}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes float{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<div class="card">
+
+<section class="screen active" id="s0">
+  <div class="heart">💗</div>
+  <h1>Anushka...</h1>
+  <p>Ek chhota sa surprise hai.<br>Bas <b>2 minutes</b> ke liye busy life se break le lo. 😊</p>
+  <p class="small">No pressure. No serious questions. Promise. ✨</p>
+  <button onclick="go(1)">Open My Surprise 💌</button>
+</section>
+
+<section class="screen" id="s1">
+  <div class="progress"><div class="bar"></div></div>
+  <h2>Question 1 🌸</h2>
+  <p>Aaj agar tumhe ek free wish mile...</p>
+  <button onclick="go(2)">Peace & Happiness 😌</button>
+  <button class="alt" onclick="go(2)">Good Memories ✨</button>
+  <p class="small">Bas choose karo, overthink mat karna 😄</p>
+</section>
+
+<section class="screen" id="s2">
+  <div class="progress"><div class="bar"></div></div>
+  <h2>Question 2 👀</h2>
+  <p>Kabhi aisa hua hai ki kisi se baat karne ka mann tha,<br>par pata nahi tha kya bolna hai?</p>
+  <button onclick="go(3)">Haan 🥹</button>
+  <button class="alt" onclick="go(3)">Maybe... 😅</button>
+</section>
+
+<section class="screen" id="s3">
+  <div class="progress"><div class="bar"></div></div>
+  <h2>Last one... 🌷</h2>
+  <p>Ek person tumhari life mein ho jo kabhi-kabhi bina reason smile kara de...</p>
+  <button onclick="go(4)">That's special ❤️</button>
+  <button class="alt" onclick="go(4)">Interesting... ✨</button>
+</section>
+
+<section class="screen" id="s4">
+  <div class="heart">🥹❤️</div>
+  <h2>Okay... now the real surprise.</h2>
+  <p><b>Anushka, are you happy?</b></p>
+  <p>
+    Me pan busy asto, he mala mahit aahe.<br>
+    Pan kadhi kadhi tuzyashi bolavasa khup manapasun vatata.
+    Kay bolu, tu kasa react karshil... hech vichar karta karta
+    kahi bolaychach rahun jata.
+  </p>
+  <button onclick="go(5)">Read the rest 💌</button>
+</section>
+
+<section class="screen" id="s5">
+  <h2>Just something I wanted to say... 🌸</h2>
+  <p>
+    Ani tu pan busy astes na... mhanun kahi force nahi,
+    kahi expectation nahi.
+  </p>
+  <p>
+    Fakt ek goshta — <b>tujhyashi bollyavar mood automatically
+    thoda better hoto.</b>
+  </p>
+  <div class="quote">
+    “Kuch rishte naam ke mohtaaj nahi hote,<br>
+    kuch log paas hokar bhi roz baat nahi karte.<br>
+    Par jab bhi yaad aate hain,<br>
+    dil bas itna kehta hai —<br>
+    <b>ye insaan thoda sa special hai... ❤️</b>”
+  </div>
+  <button onclick="go(6)">One last thing ✨</button>
+</section>
+
+<section class="screen" id="s6">
+  <div class="heart">🌷</div>
+  <h2>So, Anushka...</h2>
+  <p>
+    Don't worry about replying perfectly.<br>
+    Bas smile kar dena. 😊
+  </p>
+  <p>
+    Because if this little surprise made you smile,
+    <b>mera kaam successful. ❤️</b>
+  </p>
+  <p><b>Stay happy, always. 🌸</b></p>
+  <button onclick="celebrate()">Tap for a final surprise 🎉</button>
+  <p id="final" class="small"></p>
+</section>
+
+</div>
+
+<script>
+let current=0;
+function go(n){
+  document.getElementById('s'+current).classList.remove('active');
+  current=n;
+  document.getElementById('s'+current).classList.add('active');
+  document.querySelector('.bar').style.width=(current/6*100)+'%';
+}
+function celebrate(){
+  document.getElementById('final').innerHTML='✨ You made it! Now keep that smile. 😊❤️';
+  for(let i=0;i<28;i++){
+    const x=document.createElement('span');
+    x.textContent=['❤️','💗','✨','🌸','💕'][Math.floor(Math.random()*5)];
+    x.style.left=Math.random()*100+'vw';
+    x.style.fontSize=(18+Math.random()*20)+'px';
+    x.style.animationDelay=(Math.random()*1.5)+'s';
+    document.getElementById('hearts').appendChild(x);
+    setTimeout(()=>x.remove(),6500);
+  }
+}
+</script>
+</body>
+</html>
